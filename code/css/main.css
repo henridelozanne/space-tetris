@@ -7,65 +7,77 @@ body {
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 15px 30px;
 }
 
 h1 {
   color: white;
   font-family: "Bungee", cursive;
-  margin: 35px 0 0 40px;
+  margin: 0;
   animation: aitf 80s linear infinite;
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 
 #canvas {
-  margin-left: 200px;
-  margin-top: 130px;
   border: 2px solid rgb(88, 88, 88);
   background-size: 100%;
   background-color: black;
-  border-radius: 3%;
+  border-radius: 5px;
+}
+
+.board-container {
+  position: relative;
+}
+
+#score-container {
+  position: absolute;
+  right: -40px;
+  top: -45px;
+  font-family: "Bungee", cursive;
+  font-size: 2em;
+  display: flex;
+  transform: rotate(15deg);
+  border: 5px solid teal;
+  border-radius: 10px;
 }
 
 #score {
-  background-color: white;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
   justify-content: center;
   align-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 50%;
   display: flex;
-  width: 150px;
-  height: 150px;
+  padding: 0 20px;
+  height: 63px;
   text-align: center;
   align-items: center;
 }
 
-#compteARebours {
-  margin-left: 530px;
-}
-
 #start-game {
-  width: 150px;
-  height: 150px;
+  min-width: 160px;
+  min-height: 60px;
   font-family: "Bungee", cursive;
-  font-size: 1.7em;
-  margin: 0 0 0 30px;
-  bottom: 220px;
-  position: absolute;
-  border-radius: 50%;
-  transition: all 0.6s ease 0s;
+  font-size: 1.6em;
+  border-radius: 10px;
+  transition: all 0.6s ease;
+  margin-top: 50px;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  border: 5px solid teal;
+  padding: 0 10px;
 }
 
-button:hover {
+#start-game:hover {
   background: rgb(46, 35, 167);
   color: rgb(237, 240, 66);
-  border: double 17px rgb(0, 153, 255)
-}
-
-#score-container {
-  position: relative;
-  left: 833px;
-  bottom: 320px;
-  font-family: "Bungee", cursive;
-  font-size: 2em;
-  display: flex;
+  border: groove 10px rgb(0, 153, 255);
+  cursor: pointer;
+  background-image: unset;
 }

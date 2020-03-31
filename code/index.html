@@ -26,17 +26,13 @@
   </head>
   <body>
     <h1>Space Tetris 🚀</h1>
-    <div id="compteARebours">
-      <progress value="0" max="10" id="timer"></progress>
+    <div class="board-container">
+      <div id="score-container">
+        <div id="score">0</div>
+      </div>
+      <canvas id="canvas" width="600" height="600"></canvas>
     </div>
-
-    <canvas id="canvas" width="600" height="600"></canvas>
-
     <button id="start-game">Start game</button>
-
-    <div id="score-container">
-      <div id="score"></div>
-    </div>
 
     <embed src="./sounds/jazzTetris.mp3" autostart="false" loop="0" hidden="true"></embed>
   </body>
