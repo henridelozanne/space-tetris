@@ -93,7 +93,7 @@ Block.prototype.dropBlock = function() {
   var dropSound = new Audio("./sounds/dropSound.wav");
   dropSound.play();
 
-  // The for loop while look if we need to put the "g.currentBlock.y" at higher level
+  // The for loop checks if we need to put the "g.currentBlock.y" at higher level
   for (var i = 0; i < g.positionedBlocks.length; i++) {
     if (
       g.currentBlock.x + g.currentBlock.width - 1 >= g.positionedBlocks[i].x &&
@@ -110,46 +110,72 @@ Block.prototype.dropBlock = function() {
   g.currentBlock.color = temp;
   g.displayInDOM();
   g.positionedBlocks.push(g.currentBlock);
-
+  
   Block.prototype.deleteBlocks();
   g.generateNewRandomBlock();
   g.gameOver();
 };
 
 Block.prototype.deleteBlocks = function() {
-  for (var a = 0; a < g.positionedBlocks.length; a++) {
-    for (var b = a + 1; b < g.positionedBlocks.length; b++) {
-      if (
-        ((g.positionedBlocks[b].x <= g.positionedBlocks[a].x &&
-          g.positionedBlocks[a].x <=
-            g.positionedBlocks[b].x + g.positionedBlocks[b].width &&
-          (g.positionedBlocks[b].y <= g.positionedBlocks[a].y &&
-            g.positionedBlocks[a].y <=
-              g.positionedBlocks[b].y + g.positionedBlocks[b].height)) ||
-          (g.positionedBlocks[b].x <=
-            g.positionedBlocks[a].x + g.positionedBlocks[a].width &&
-            g.positionedBlocks[a].x + g.positionedBlocks[a].width <=
-              g.positionedBlocks[b].x + g.positionedBlocks[b].width &&
-            g.positionedBlocks[b].y <=
-              g.positionedBlocks[a].y + g.positionedBlocks[a].height &&
-            g.positionedBlocks[a].y + g.positionedBlocks[a].height <=
-              g.positionedBlocks[b].y + g.positionedBlocks[b].height)) &&
-        g.positionedBlocks[a].color === g.positionedBlocks[b].color
-      ) {
-        var deleteSound = new Audio("./sounds/deleteSound.wav");
+  const currentBlock = g.currentBlock;
+  const yToLook = currentBlock.y + currentBlock.height;
+  const xIntervalToLook = [];
+  const xToLook = [currentBlock.x - 1, currentBlock.x+currentBlock.width];
+  const yIntervalToLook = [];
+  for (i=currentBlock.y; i<currentBlock.y+currentBlock.height; i++) {
+      yIntervalToLook.push(i);
+  }
+
+  // Par-dessus
+  for (i=currentBlock.x; i<currentBlock.x+currentBlock.width; i++) {
+      xIntervalToLook.push(i);
+  }
+
+  const filteredBlocks = g.positionedBlocks.filter((block) => block.color === currentBlock.color && block.y === yToLook);
+  let hasBeenDeleted = false;
+
+  filteredBlocks.forEach((block) => {
+    for (i=block.x; i<block.x+block.width; i++) {
+      if (xIntervalToLook.includes(i)) {
+        // update score
+        g.score += (currentBlock.width * currentBlock.height + block.width * block.height) * 100;
+        // sound
+        const deleteSound = new Audio("./sounds/deleteSound.wav");
         deleteSound.play();
-        g.score +=
-          (g.positionedBlocks[a].width * g.positionedBlocks[a].height +
-            g.positionedBlocks[b].width * g.positionedBlocks[b].height) *
-          100;
-
-        g.positionedBlocks.splice(b, 1); // b first because b > a
-        g.positionedBlocks.splice(a, 1);
-
-        g.displayInDOM();
+        // delete blocks
+        g.positionedBlocks.pop();
+        g.positionedBlocks.splice(g.positionedBlocks.indexOf(block), 1);
+        hasBeenDeleted = true;
+        return;
       }
     }
-  }
+  });
+
+  // Sur les côtés
+  const rightColorBlocks = g.positionedBlocks.filter((block) => block.color === currentBlock.color);
+  rightColorBlocks.forEach((block) => {
+    // validate x
+    if (block.x+block.width-1 === xToLook[0] || block.x === xToLook[1]) {
+      // validate y
+      for (i=block.y; i<block.y+block.height; i++) {
+        let oneSideDeleted = false;
+        if (yIntervalToLook.includes(i) && !oneSideDeleted) {
+          // update score
+          g.score += (currentBlock.width * currentBlock.height + block.width * block.height) * 100;
+          // sound
+          const deleteSound = new Audio("./sounds/deleteSound.wav");
+          deleteSound.play();
+          // delete blocks
+          if (!hasBeenDeleted) {
+            g.positionedBlocks.pop();
+          }
+          g.positionedBlocks.splice(g.positionedBlocks.indexOf(block), 1);
+          oneSideDeleted = true;
+          return;
+        }
+      }
+    }
+  });
 };
 
 Block.prototype.clearedGameZone = function() {
