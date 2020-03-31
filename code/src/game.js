@@ -12,8 +12,6 @@ var Game = function(ctx) {
 };
 
 Game.prototype.generateNewRandomBlock = function() {
-  // if (!g.gameOver()) {
-  // g.setTimer();
   clearTimeout(this.setTimeout);
   this.setTimeout = setTimeout(function() {
     Block.prototype.dropBlock();
@@ -34,18 +32,7 @@ Game.prototype.generateNewRandomBlock = function() {
   );
   g.displayInDOM();
   return this.currentBlock;
-  // var leTimer = g.setTimeout(g.timer, 1000);
-  // g.setTimeout()
 };
-
-// Game.prototype.setTimer = function() {
-//   var timeleft = 10;
-//   var downloadTimer = setInterval(function() {
-//     document.getElementById("timer").value = 10 - timeleft;
-//     if (timeleft <= 0) clearInterval(downloadTimer);
-//     Block.prototype.dropBlock();
-//   }, 2000);
-// };
 
 Game.prototype.displayInConsole = function() {
   for (var y = 0; y < this.height; y++) {
@@ -96,9 +83,6 @@ Game.prototype.displayInDOM = function() {
 };
 
 Game.prototype.newTurn = function() {
-  // this.turn += 1;
-  // this.generateNewRandomBlock();
-  // this.gameOver();
 };
 
 Game.prototype.gameOver = function() {
@@ -107,8 +91,6 @@ Game.prototype.gameOver = function() {
     if (g.positionedBlocks[i].y <= 1) {
       gameOverSound.play();
       window.alert("GAME OVER ! Your score is " + g.score + ".");
-
-      // ("your final score is + score");
     }
   }
 };

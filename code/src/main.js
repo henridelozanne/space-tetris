@@ -29,10 +29,6 @@ window.onload = function() {
     ctx.lineTo(600, j);
     ctx.stroke();
   }
-
-  // displayScore();
-
-  // drawScore();
 };
 
 window.onkeydown = function(event) {
@@ -54,14 +50,6 @@ window.onkeydown = function(event) {
       break;
   }
 };
-
-// function drawScore() {
-//   var c = document.getElementById("canvas");
-//   var ctx = c.getContext("2d");
-//   ctx.font = "20px Arial";
-//   ctx.fillStyle = "red";
-//   ctx.fillText("Score: " + g.score, 8.5 * 60, 0.5 * 60);
-// }
 
 function displayScore() {
   intervalID = setInterval(updateScore, 1000);

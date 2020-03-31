@@ -4,8 +4,8 @@
  * y: coordinates in the grid (between 0 and 9)
  * width: width in the grid (min: 1, max: 3)
  * height: height in the grid (min: 1, max: 3)
- * color
  */
+
 function Block(
   idNumber,
   x,
@@ -122,17 +122,7 @@ Block.prototype.dropBlock = function() {
   Block.prototype.deleteBlocks();
   g.generateNewRandomBlock();
   g.gameOver();
-
-  // document.getElementById("score") = g.score
 };
-
-// function updateCanvas() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//   drawBlock();
-
-//   requestAnimationFrame(updateCanvas);
-// }
 
 Block.prototype.deleteBlocks = function() {
   for (var a = 0; a < g.positionedBlocks.length; a++) {
@@ -156,19 +146,13 @@ Block.prototype.deleteBlocks = function() {
       ) {
         var deleteSound = new Audio("./sounds/deleteSound.wav");
         deleteSound.play();
-        // g.clearedGameZone();
         g.score +=
           (g.positionedBlocks[a].width * g.positionedBlocks[a].height +
             g.positionedBlocks[b].width * g.positionedBlocks[b].height) *
           100;
-        // document.getElementById("score") = g.score;
 
         g.positionedBlocks.splice(b, 1); // b first because b > a
         g.positionedBlocks.splice(a, 1);
-
-        // console.log(g.score);
-        // g.positionedBlocks[a].color = "black";
-        // g.positionedBlocks[b].color = "black";
 
         g.displayInDOM();
       }
@@ -181,44 +165,3 @@ Block.prototype.clearedGameZone = function() {
     g.score += 1000;
   }
 };
-
-// //nouveau code modifié
-// if (
-//   (
-//     (
-//       (positionedBlocks[b].x <= positionedBlocks[a].x) && (positionedBlocks[a].x <= positionedBlocks[b].x + positionedBlocks[b].width)
-//   &&
-//   (
-//     (positionedBlocks[b].y <= positionedBlocks[a].y) && (positionedBlocks[a].y <= positionedBlocks[b].y + positionedBlocks[b].height)
-//   )
-//   ||
-//   (
-//     (positionedBlocks[b].x<=positionedBlocks[a].x + positionedBlocks[a].width) && (positionedBlocks[a].x + positionedBlocks[a].width <= positionedBlocks[b].x + positionedBlocks[b].width)
-//   )
-//   &&
-//   (positionedBlocks[b].y<=positionedBlocks[a].y + positionedBlocks[a].height) && (positionedBlocks[a].y + positionedBlocks[a].height <= positionedBlocks[b].y + positionedBlocks[b].height)
-// )
-// )
-// &&
-// positionedBlocks[a].color === positionedBlocks[b].color){
-
-//   }
-
-//   //vieux code pas modifié:
-//   if (
-//     (g.positionedBlocks[b].x <= g.positionedBlocks[a].x &&
-//       g.positionedBlocks[a].x <=
-//         g.positionedBlocks[b].x + g.positionedBlocks[b].width &&
-//       g.positionedBlocks[b].y <= g.positionedBlocks[a].y &&
-//       g.positionedBlocks[a].y <=
-//         g.positionedBlocks[b].y + g.positionedBlocks[b].width) ||
-//     (g.positionedBlocks[b].x <=
-//       g.positionedBlocks[a].x + g.positionedBlocks[a].width &&
-//       g.positionedBlocks[a].x + g.positionedBlocks[a].width <=
-//         g.positionedBlocks[b].x + g.positionedBlocks[b].width &&
-//       g.positionedBlocks[b].y <=
-//         g.positionedBlocks[a].y + g.positionedBlocks[a].height &&
-//       g.positionedBlocks[a].y + g.positionedBlocks[a].height <=
-//         g.positionedBlocks[b].height &&
-//       g.positionedBlocks[a].color === g.positionedBlocks[b].color)
-//   )

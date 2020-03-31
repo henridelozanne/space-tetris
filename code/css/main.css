@@ -36,12 +36,8 @@ h1 {
   width: 150px;
   height: 150px;
   text-align: center;
-  /* top: 80px; */
   align-items: center;
-
-  /* padding: 20px 0 0 0; */
-  }
-
+}
 
 #compteARebours {
   margin-left: 530px;
@@ -65,12 +61,6 @@ button:hover {
   border: double 17px rgb(0, 153, 255)
 }
 
-/* score:hover {
-  background: rgb(46, 35, 167);
-  color: rgb(237, 240, 66);
-  border: dashed 17px rgb(0, 153, 255)
-} */
-
 #score-container {
   position: relative;
   left: 833px;
@@ -79,7 +69,6 @@ button:hover {
   font-size: 2em;
   display: flex;
 }
-
 
 p {
   color: white;
@@ -90,43 +79,3 @@ p {
   margin-right: 440px;
  
 }
-
-
-.
-  border-radius 3rem
-  color yellow
-  font-family roboto
-  font-size 4rem
-  font-weight 100
-  overflow hidden
-  padding 1rem 2rem
-  position relative
-  text-decoration none
-  transition .2s transform ease-in-out
-  will-change transform
-  z-index 0
-  
-  &::after
-    background-color yellow
-    border-radius 3rem
-    content: ''
-    display block
-    height 100%
-    width 100%
-    position absolute
-    left 0
-    top 0
-    transform translate(-100%, 0) rotate(10deg)
-    transform-origin top left
-    transition .2s transform ease-out
-    will-change transform
-    z-index -1
-    
-  &:hover::after
-    transform translate(0, 0)
-    
-  &:hover
-    border 2px solid transparent
-    color indigo
-    transform scale(1.05)
-    will-change transform
