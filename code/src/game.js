@@ -4,7 +4,7 @@ var Game = function(ctx) {
   this.currentBlock;
   this.positionedBlocks = [];
   this.newTurn();
-  this.colors = ["red", "blue", "green", "yellow", "orange", "pink", "cyan"];
+  this.colors = ["#d72323", "#3d5af1", "#83e85a", "#faee1c", "#9c1de7", "#f2a2e4", "#74f9ff"];
   this.width = 10;
   this.height = 10;
   this.ctx = ctx;
