@@ -69,13 +69,3 @@ button:hover {
   font-size: 2em;
   display: flex;
 }
-
-p {
-  color: white;
-  font-family: "Bungee";
-  font-size: 1.4em;
-  float: right;
-  margin-top: 260px;
-  margin-right: 440px;
- 
-}
