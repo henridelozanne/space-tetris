@@ -35,17 +35,14 @@ window.onkeydown = function(event) {
   switch (event.keyCode) {
     case LEFT_KEY:
       event.preventDefault();
-      console.log("left was called");
       Block.prototype.goLeft();
       break;
     case RIGHT_KEY:
       event.preventDefault();
-      console.log("right was called");
       Block.prototype.goRight();
       break;
     case SPACE_KEY:
       event.preventDefault();
-      console.log("drop was called");
       Block.prototype.dropBlock();
       break;
   }

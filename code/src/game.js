@@ -49,7 +49,6 @@ Game.prototype.displayInConsole = function() {
         line += ".";
       }
     }
-    console.log(line);
   }
 };
 

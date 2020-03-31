@@ -13,9 +13,6 @@ function Block(
   width,
   height,
   color,
-  gravity,
-  gravitySpeed,
-  speedY
 ) {
   this.idNumber = idNumber;
   this.x = x;
@@ -23,31 +20,26 @@ function Block(
   this.width = width;
   this.height = height;
   this.color = color;
-  this.gravity = 0.3;
-  this.gravitySpeed = 0;
-  this.speedY = 0;
 }
 
 Block.prototype.goLeft = function() {
   var temp = g.currentBlock.color;
-
   g.currentBlock.color = "black";
   g.displayInDOM();
-
-  g.currentBlock.x -= 1;
-
+  if (g.currentBlock.x > 0) {
+    g.currentBlock.x -= 1;
+  }
   g.currentBlock.color = temp;
-
   g.displayInDOM();
 };
 
 Block.prototype.goRight = function() {
   var temp = g.currentBlock.color;
-
   g.currentBlock.color = "black";
   g.displayInDOM();
-
-  g.currentBlock.x += 1;
+  if (g.currentBlock.x + g.currentBlock.width - 1 < 9) {
+    g.currentBlock.x += 1;
+  }
   g.currentBlock.color = temp;
   g.displayInDOM();
 };
