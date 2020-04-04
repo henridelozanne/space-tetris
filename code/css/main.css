@@ -81,3 +81,37 @@ h1 {
   cursor: pointer;
   background-image: unset;
 }
+
+svg {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  fill: black;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  transition: all .6s ease;
+  border: 7px solid teal;
+  padding: 6px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+svg:hover {
+  background: rgb(46, 35, 167);
+  fill: rgb(237, 240, 66);
+  border: groove 7px rgb(0, 153, 255);
+  background-image: unset;
+}
+
+.visible {
+  display: block;
+}
+
+.not-visible {
+  display: none;
+}
+
+audio {
+  display: none;
+}

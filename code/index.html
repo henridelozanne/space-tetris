@@ -6,6 +6,7 @@
     <script src="src/game.js"></script>
     <script src="src/block.js"></script>
     <script src="src/main.js"></script>
+    <script src="src/sounds.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- start Mixpanel -->
     <script type="text/javascript">(function (e, a) {
@@ -21,11 +22,14 @@
           }; a.__SV = 1.2; b = e.createElement("script"); b.type = "text/javascript"; b.async = !0; b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; c = e.getElementsByTagName("script")[0]; c.parentNode.insertBefore(b, c)
         }
       })(document, window.mixpanel || []);
-      mixpanel.init("e1d4bd927b79e9e70d37f785da73a185");</script>
+      mixpanel.init("e1d4bd927b79e9e70d37f785da73a185");
+      </script>
     <!-- end Mixpanel -->
   </head>
   <body>
     <h1>Space Tetris 🚀</h1>
+    <svg onclick="toggleVolume('on')" class="visible" id="volume-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7.22L6.603 10H3v4h3.603L10 16.78V7.22zM5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16zm13.517 4.134l-1.416-1.416A8.978 8.978 0 0 0 21 12a8.982 8.982 0 0 0-3.304-6.968l1.42-1.42A10.976 10.976 0 0 1 23 12c0 3.223-1.386 6.122-3.594 8.134zm-3.543-3.543l-1.422-1.422A3.993 3.993 0 0 0 16 12c0-1.43-.75-2.685-1.88-3.392l1.439-1.439A5.991 5.991 0 0 1 18 12c0 1.842-.83 3.49-2.137 4.591z"/></svg>
+    <svg onclick="toggleVolume('off')" class="not-visible" id="volume-off" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7.22L6.603 10H3v4h3.603L10 16.78V7.22zM5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16zm14.525-4l3.536 3.536-1.414 1.414L19 13.414l-3.536 3.536-1.414-1.414L17.586 12 14.05 8.464l1.414-1.414L19 10.586l3.536-3.536 1.414 1.414L20.414 12z"/></svg>
     <div class="board-container">
       <div id="score-container">
         <div id="score">0</div>
@@ -34,6 +38,8 @@
     </div>
     <button id="start-game">Start game</button>
 
-    <embed src="./sounds/jazzTetris.mp3" autostart="false" loop="0" hidden="true"></embed>
+    <audio controls id="music" autoplay>
+      <source src="./sounds/jazzTetris.mp3">
+    </audio>
   </body>
 </html>
