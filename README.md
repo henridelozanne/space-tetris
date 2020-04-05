@@ -1,5 +1,3 @@
-# Tetrix-Game
+# Space-Tetris
 
-## Link
-
-[GitHub Page](https://henridelozanne.github.io/Tetrix-Game/)
+First coding project
